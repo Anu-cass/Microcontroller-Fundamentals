@@ -1,0 +1,35 @@
+#define LED 13
+#define BUTTON 11
+
+bool lastButtonSt = HIGH;
+bool ledState = LOW;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(LED, OUTPUT);
+  pinMode(BUTTON, INPUT_PULLUP);
+  digitalWrite(LED, LOW);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char data = Serial.read();
+    if (data == '1') {
+      ledState = !ledState;
+      if(ledState==HIGH){
+        digitalWrite(LED, HIGH);
+      }
+      else{
+        digitalWrite(LED, LOW);
+      }
+    }
+  }
+
+  bool currentButtonSt = digitalRead(BUTTON);
+  if (currentButtonSt == LOW && lastButtonSt == HIGH) {
+    Serial.write('1');
+    delay(500);
+  }
+
+  lastButtonSt = currentButtonSt;
+}
