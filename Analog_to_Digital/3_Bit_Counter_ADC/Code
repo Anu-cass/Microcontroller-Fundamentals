@@ -1,0 +1,18 @@
+  int analogValue = analogRead(analogInputPin);
+
+  int digitalValue = map(analogValue, 0, 1023, 0, 7);
+
+
+  int bit0 = digitalValue % 2;
+  int temp = digitalValue / 2;
+  int bit1 = temp % 2;
+  temp = temp / 2;
+  int bit2 = temp % 2;
+
+  digitalWrite(ledPins[0], bit0); 
+  digitalWrite(ledPins[1], bit1);
+  digitalWrite(ledPins[2], bit2); 
+
+ 
+  delay(1000); 
+}
