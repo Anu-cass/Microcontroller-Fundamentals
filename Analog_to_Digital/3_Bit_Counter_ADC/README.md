@@ -1,3 +1,5 @@
+A 3-bit counter-type ADC
+
 Construction: It uses a Comparator, a 3-bit Digital-to-Analog Converter (DAC), a 3-bit Binary Counter, a Clock, and an AND gate as control logic.
 
 Working:
